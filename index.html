@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELORI - Cosmética Asiática Premium</title>
+    <style>
+        :root {
+            --primary: #f5a9cb;
+            --secondary: #f7cde1;
+            --accent: #ffb6c1;
+            --text: #4a4a4a;
+            --light: #fff8fa;
+            --dark: #333333;
+            --gold: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icons a {
+            margin-left: 15px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        .icons a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(245, 169, 203, 0.2), rgba(255, 182, 193, 0.2));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 50px;
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .category-description {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        
+        /* Featured Products */
+        .featured {
+            padding: 80px 0;
+            background-color: var(--secondary);
+        }
+        
+        .featured-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .product-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-btn:hover {
+            background-color: var(--accent);
+        }
+        
+        .wishlist-btn {
+            background-color: transparent;
+            color: var(--text);
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wishlist-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-image: url('/api/placeholder/600/400');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--secondary);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .newsletter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .newsletter-title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-text {
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--dark);
+            color: white;
+            padding: 0 30px;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 60px 0 30px;
+            color: white;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--primary);
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .floating-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .floating-icon:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .about-img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">BELO<span>RI</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Rutinas</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Descubre la Belleza Asiática</h1>
+            <p class="hero-subtitle">Productos premium 100% originales de Corea, Japón y China para transformar tu rutina de skincare.</p>
+            <a href="#" class="btn">Explorar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Categorías</h2>
+            <div class="categories-container">
+                <div class="category-card">
+                    <img src="Beauty-of-Joseon-Brand-Model_1600x.jpg" alt="K-Beauty" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">K-Beauty</h3>
+                        <p class="category-description">Descubre la innovación coreana en skincare y maquillaje</p>
+                        <a href="#" class="btn">Ver Más</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="images.jpg" alt="J-Beauty" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">J-Beauty</h3>
+                        <p class="category-description">La elegancia y minimalismo japonés para tu piel</p>
+                        <a href="#" class="btn">Ver Más</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="florasis-jpeg.jpg" alt="C-Beauty" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">C-Beauty</h3>
+                        <p class="category-description">Tradición milenaria china en productos contemporáneos</p>
+                        <a href="#" class="btn">Ver Más</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="premium_photo-1661723502172-7d06afdee178.jpeg" alt="Accesorios" class="category-img">
+                    <div class="category-content">
+                        <h3 class="category-title">Accesorios</h3>
+                        <p class="category-description">Complementos para optimizar tu rutina de belleza</p>
+                        <a href="#" class="btn">Ver Más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="featured-container">
+                <div class="product-card">
+                    <img src="Centella.png" alt="Producto 1" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">Essence Hidratante Centella</h3>
+                        <p class="product-price">S/ 85.00</p>
+                        <p class="product-description">Esencia hidratante con extracto de centella asiática para calmar y reparar la piel.</p>
+                        <div class="product-actions">
+                            <button class="product-btn">Añadir al Carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="mascarillababa.png" alt="Producto 2" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">Mascarilla de Baba de Caracol</h3>
+                        <p class="product-price">S/ 12.00</p>
+                        <p class="product-description">Mascarilla facial revitalizante con extracto de baba de caracol para regenerar la piel.</p>
+                        <div class="product-actions">
+                            <button class="product-btn">Añadir al Carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="serum.png" alt="Producto 3" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">Sérum Ácido Hialurónico</h3>
+                        <p class="product-price">S/ 120.00</p>
+                        <p class="product-description">Sérum facial ultra hidratante con ácido hialurónico para una piel jugosa y radiante.</p>
+                        <div class="product-actions">
+                            <button class="product-btn">Añadir al Carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="cushion.png" alt="Producto 4" class="product-img">
+                    <div class="product-content">
+                        <h3 class="product-title">Base Cushion SPF 50</h3>
+                        <p class="product-price">S/ 95.00</p>
+                        <p class="product-description">Base de maquillaje en formato cushion con alta protección solar y acabado natural.</p>
+                        <div class="product-actions">
+                            <button class="product-btn">Añadir al Carrito</button>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="belori.png">
+            </div>
+            <div class="about-content">
+                <h2 class="about-title">Sobre BELORI</h2>
+                <p class="about-text">Somos una tienda online peruana especializada en la importación y comercialización de cosméticos asiáticos premium. Nuestro objetivo es acercar lo mejor de la belleza asiática al mercado peruano, ofreciendo productos 100% originales y certificados.</p>
+                <p class="about-text">Trabajamos directamente con distribuidores oficiales en Corea del Sur, Japón y China para garantizar la autenticidad y calidad de todos nuestros productos.</p>
+                <a href="#" class="btn">Conoce Nuestra Historia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Desde que descubrí BELORI, mi rutina de skincare ha mejorado notablemente. Los productos son de excelente calidad y los resultados son visibles desde las primeras aplicaciones."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Cliente 1" class="author-img">
+                        <div class="author-info">
+                            <h4>Mariana Torres</h4>
+                            <p>Cliente Frecuente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"La asesoría personalizada que ofrecen es increíble. Encontré productos específicos para mi tipo de piel que nunca había conseguido en tiendas convencionales."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Cliente 2" class="author-img">
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Cliente Nuevo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Las mascarillas coreanas que compré en BELORI son las mejores que he probado. La entrega fue rápida y el empaque precioso, ideal para regalar."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/100/100" alt="Cliente 3" class="author-img">
+                        <div class="author-info">
+                            <h4>Lucía Fernández</h4>
+                            <p>Cliente Frecuente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2 class="newsletter-title">Suscríbete a Nuestro Newsletter</h2>
+            <p class="newsletter-text">Recibe las últimas novedades, ofertas exclusivas y consejos de belleza directamente en tu correo.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico">
+                <button type="submit" class="newsletter-btn">Suscribirme</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">BELO<span>RI</span></a>
+                <p class="footer-text">Importación y venta de cosméticos asiáticos premium. Productos 100% originales y certificados de Corea, Japón y China.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Rutinas</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3

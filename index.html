@@ -650,12 +650,12 @@
             <a href="#" class="logo">BELO<span>RI</span></a>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">Rutinas</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#productos">Productos Destacados</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#news">Newsletter</a></li>
                 </ul>
             </nav>
             <div class="icons">
@@ -668,7 +668,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="hero-content">
             <h1 class="hero-title">Descubre la Belleza Asiática</h1>
             <p class="hero-subtitle">Productos premium 100% originales de Corea, Japón y China para transformar tu rutina de skincare.</p>
@@ -677,7 +677,7 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="categories">
+    <section class="categories" id="categorias">
         <div class="container">
             <h2 class="section-title">Categorías</h2>
             <div class="categories-container">
@@ -718,7 +718,7 @@
     </section>
 
     <!-- Featured Products -->
-    <section class="featured">
+    <section class="featured" id="productos">
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
             <div class="featured-container">
@@ -790,7 +790,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials">
+    <section class="testimonials" id="blog">
         <div class="container">
             <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
             <div class="testimonials-container">
@@ -829,7 +829,7 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter">
+    <section class="newsletter" id="news">
         <div class="container newsletter-container">
             <h2 class="newsletter-title">Suscríbete a Nuestro Newsletter</h2>
             <p class="newsletter-text">Recibe las últimas novedades, ofertas exclusivas y consejos de belleza directamente en tu correo.</p>
@@ -848,8 +848,8 @@
                 <p class="footer-text">Importación y venta de cosméticos asiáticos premium. Productos 100% originales y certificados de Corea, Japón y China.</p>
                 <div class="footer-social">
                     <a href="https://www.facebook.com/share/16Ty7UShmF/" rel="http://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/belori.store?utm_source=qr&igsh=MXc3MjA4cWRnY3RibA==" rel="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@beloristore?_t=ZM-8w5V3PHqzMj&_r=1" rel="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
@@ -865,4 +865,58 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h3
+                <h3 class="footer-title">Contáctanos</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Lima, Perú</li>
+                    <li><i class="fas fa-envelope"></i> contacto@belori.pe</li>
+                    <li><i class="fas fa-phone"></i> +51 987 654 321</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BELORI. Todos los derechos reservados.
+        </div>
+    </footer>
+<!-- Modal de carrito -->
+<div id="cart-modal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+  <div class="modal-content" style="background:#fff; padding:30px; border-radius:10px; max-width:400px; margin:auto; text-align:center; position:relative;">
+    <span class="close-btn" style="position:absolute; top:10px; right:20px; font-size:20px; cursor:pointer;">&times;</span>
+    <h3>Producto añadido al carrito</h3>
+    <p><strong>Producto:</strong> <span id="modal-product-name"></span></p>
+    <p><strong>Precio:</strong> <span id="modal-product-price"></span></p>
+    <button class="btn">Ir al carrito</button>
+  </div>
+</div>
+
+<script>
+  const addToCartButtons = document.querySelectorAll('.product-btn');
+  const modal = document.getElementById('cart-modal');
+  const closeModal = document.querySelector('.close-btn');
+  const productNameSpan = document.getElementById('modal-product-name');
+  const productPriceSpan = document.getElementById('modal-product-price');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const productCard = this.closest('.product-card');
+      const productName = productCard.querySelector('.product-title').textContent;
+      const productPrice = productCard.querySelector('.product-price').textContent;
+
+      productNameSpan.textContent = productName;
+      productPriceSpan.textContent = productPrice;
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  closeModal.onclick = function () {
+    modal.style.display = 'none';
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+</script>
+</body>
+</html>
